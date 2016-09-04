@@ -1,8 +1,9 @@
 package cn.tf.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Students {
+public class Students implements Serializable{
 	
 	private String sid; // 学号
 	private String sname;

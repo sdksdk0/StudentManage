@@ -24,7 +24,7 @@ public interface BusinessService {
 	public boolean update(Students s);
 	
 	//删除
-	public boolean delete(Students sid);
+	public boolean delete(String sid);
 	
 
 }

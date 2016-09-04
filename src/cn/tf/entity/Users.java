@@ -1,7 +1,9 @@
 package cn.tf.entity;
 
+import java.io.Serializable;
+
 //用户类
-public class Users {
+public class Users implements Serializable{
 	
 	private Integer uid;
 	private String username;

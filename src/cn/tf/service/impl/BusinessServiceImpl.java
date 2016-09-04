@@ -34,7 +34,7 @@ public class BusinessServiceImpl implements BusinessService{
 	@Override
 	public boolean add(Students s) {
 		
-		return false;
+		return studentsDao.add(s);
 	}
 
 	@Override
@@ -44,9 +44,9 @@ public class BusinessServiceImpl implements BusinessService{
 	}
 
 	@Override
-	public boolean delete(Students sid) {
+	public boolean delete(String sid) {
 		
-		return false;
+		return studentsDao.delete(sid);
 	}
 	
 
