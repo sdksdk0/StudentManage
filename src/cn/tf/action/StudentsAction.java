@@ -58,11 +58,36 @@ public class StudentsAction extends SuperAction  {
 		return "ADD_SUCESS";
 		
 	}
-
-
-
-
 	
 	
+	//修改
+	public String modify(){
+		String sid=request.getParameter("sid");
+		
+		Students  s=businessService.findById(sid);
+		session.setAttribute("modify_students", s);
+		
+		return "modify_success";
+		
+	}
+	
+	public String save() throws ParseException{
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String sid=request.getParameter("sid");
+		String sname=request.getParameter("sname");
+		String gender=request.getParameter("gender");
+		String birthday=request.getParameter("birthday");
+		String address=request.getParameter("address");
+	
+		students.setSid(sid);
+		students.setSname(sname);
+		students.setGender(gender);
+		students.setBirthday(formatter.parse(birthday));
+		students.setAddress(address);
+		
+		businessService.update(students);
+		return "SAVE_SUCCESS";
+		
+	}
 
 }

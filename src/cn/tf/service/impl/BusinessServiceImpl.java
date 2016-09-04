@@ -28,7 +28,7 @@ public class BusinessServiceImpl implements BusinessService{
 	@Override
 	public Students findById(String sid) {
 		
-		return null;
+		return studentsDao.findById(sid);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class BusinessServiceImpl implements BusinessService{
 	@Override
 	public boolean update(Students s) {
 		
-		return false;
+		return studentsDao.update(s);
 	}
 
 	@Override

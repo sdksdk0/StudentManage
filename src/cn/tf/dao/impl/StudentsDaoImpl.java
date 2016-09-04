@@ -40,8 +40,27 @@ public class StudentsDaoImpl implements StudentsDao{
 
 	@Override
 	public Students findById(String sid) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Transaction tx=null;
+		Students s=null;
+		
+		try {
+			Session session=HibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx=session.beginTransaction();
+		
+			s=(Students) session.get(Students.class, sid);
+			
+			tx.commit();
+			return s;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.commit();
+			return s;
+		}finally{
+			if(tx!=null){
+				tx=null;
+			}
+		}	
 	}
 
 	@Override
@@ -106,15 +125,26 @@ public class StudentsDaoImpl implements StudentsDao{
 	}
 	
 	
-	
-	
-	
-	
-	
 	@Override
 	public boolean update(Students s) {
-		// TODO Auto-generated method stub
-		return false;
+		Transaction tx=null;
+		
+		try {
+			Session session=HibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx=session.beginTransaction();
+			
+			session.update(s);
+
+			tx.commit();
+			return true;
+		} catch (HibernateException e) {
+			tx.commit();
+			return false;
+		}finally{
+			if(tx!=null){
+				tx=null;
+			}
+		}
 	}
 
 	@Override
